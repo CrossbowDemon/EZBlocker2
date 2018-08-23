@@ -27,7 +27,7 @@ Mute ads:
 
 Block ads:
 - To prevent ads on Spotify from loading EZBlocker 2 must apply <b>hosts patches</b> on your system. These patches to be applied should require administrator rights.
-- Enabling this option will be disabled automatic update for Spotify!
+- <s>Enabling this option will be disabled automatic update for Spotify!</s>
 
 ### Error reporting
 
