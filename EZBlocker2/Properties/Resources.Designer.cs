@@ -65,11 +65,21 @@ namespace EZBlocker2.Properties {
         ///&lt;html lang=&quot;en&quot;&gt;
         ///&lt;head&gt;
         ///    &lt;meta charset=&quot;UTF-8&quot;&gt;
-        ///    &lt;title&gt;EZBlocker 2&lt;/title&gt;
+        ///    &lt;title&gt;{PRODUCT_NAME}&lt;/title&gt;
+        ///    &lt;style&gt;
+        ///        body {
+        ///            padding: 10px;
+        ///        }
+        ///
+        ///        h1 {
+        ///            margin-top: 0;
+        ///            color: red;
+        ///        }
+        ///    &lt;/style&gt;
         ///&lt;/head&gt;
         ///&lt;body&gt;
-        ///&lt;h1&gt;&lt;span style=&apos;color:red&apos;&gt;Authorization failed...&lt;/span&gt;&lt;/h1&gt;
-        ///&lt;h2&gt;Try to reload this &lt;a href=&quot;{REDIRECT_URI}&quot;&gt;page&lt;/a&gt;&lt;/h2&gt;
+        ///&lt;h1&gt;Authorization failed...&lt;/h1&gt;
+        ///&lt;h2&gt;Try to reload &lt;a href=&quot;{AUTHORIZE_URL}&quot;&gt;this page&lt;/a&gt;&lt;/h2&gt;
         ///&lt;/body&gt;
         ///&lt;/html&gt;
         ///.
@@ -85,7 +95,17 @@ namespace EZBlocker2.Properties {
         ///&lt;html lang=&quot;en&quot;&gt;
         ///&lt;head&gt;
         ///    &lt;meta charset=&quot;UTF-8&quot;&gt;
-        ///    &lt;title&gt;EZBlocker 2&lt;/title&gt;
+        ///    &lt;title&gt;{PRODUCT_NAME}&lt;/title&gt;
+        ///    &lt;style&gt;
+        ///        body {
+        ///            padding: 10px;
+        ///        }
+        ///
+        ///        h1 {
+        ///            margin-top: 0;
+        ///            color: #00af00;
+        ///        }
+        ///    &lt;/style&gt;
         ///&lt;/head&gt;
         ///&lt;body&gt;
         ///&lt;h1&gt;Authorization succeeded!&lt;/h1&gt;
