@@ -24,20 +24,14 @@ namespace EZBlocker2.Spotify
 
         public static string RedirectUri { get; set; }
 
-        public static string TokenContentType { get; } = "application/x-www-form-urlencoded";
-        public static string StatusContentType { get; } = "application/json";
-
+        public static string ContentType { get; } = "application/x-www-form-urlencoded";
         public static string Authorization { get; } = "Basic YjYwNTg3MzdjOWEwNDhlYTg4YTcyODJiMjUzNzRjMmM6NzIyMDMzZDA4YTk0NGU2MmI1ODI2ZjFhOTkzNzczNTg=";
 
         public static string AuthorizeUrl { get; set; }
         public static string APIUrl { get; } = "https://accounts.spotify.com/api/token";
         public static string PlayingUrl { get; } = "https://api.spotify.com/v1/me/player/currently-playing";
 
-        public static APIToken APIToken { get; set; } = null;
-
-        public static string Code { get; set; } = null;
-
-        public static event Action OnNewStatus;
+        public static event Action NewStatus;
 
         private static Status status;
         public static Status Status
@@ -46,29 +40,35 @@ namespace EZBlocker2.Spotify
             set
             {
                 status = value;
-
-                // call with the correct thread
-                if (OnNewStatus != null)
-                    OnNewStatus.Invoke();
+                if (NewStatus != null)
+                    NewStatus.Invoke();
             }
         }
-                    
+        public static string Code { get; set; } = null;
+
+        public static string GrantType(bool refresh)
+        {
+            return refresh ? "refresh_token" : "authorization_code";
+        }
+
+        public static APIToken APIToken { get; set; } = null;
+
         public static void GetToken(bool refresh = false)
         {
-            client.Headers[HttpRequestHeader.ContentType] = TokenContentType;
+            client.Headers[HttpRequestHeader.ContentType] = ContentType;
             client.Headers[HttpRequestHeader.Authorization] = Authorization;
 
             NameValueCollection data = HttpUtility.ParseQueryString(string.Empty);
 
             if (!refresh)
             {
-                data.Add("grant_type", "authorization_code");
+                data.Add("grant_type", GrantType(false));
                 data.Add("redirect_uri", RedirectUri);
                 data.Add("code", Code);
             }
             else
             {
-                data.Add("grant_type", "refresh_token");
+                data.Add("grant_type", GrantType(true));
                 data.Add("refresh_token", APIToken.Refresh_Token);
             }
 
@@ -77,11 +77,9 @@ namespace EZBlocker2.Spotify
                 byte[] result = client.UploadValues(APIUrl, "POST", data);
 
                 APIToken token = JsonConvert.DeserializeObject<APIToken>(Encoding.UTF8.GetString(result));
-
                 string refresh_token = token?.Refresh_Token ?? APIToken?.Refresh_Token;
 
                 APIToken = token;
-
                 if (refresh_token != null && APIToken != null && APIToken.Refresh_Token != refresh_token)
                     APIToken.Refresh_Token = refresh_token;
 
@@ -101,11 +99,9 @@ namespace EZBlocker2.Spotify
         {
             try
             {
-                client.Headers[HttpRequestHeader.ContentType] = StatusContentType;
                 client.Headers[HttpRequestHeader.Authorization] = APIToken.Token_Type + " " + APIToken.Access_Token;
-
                 byte[] result = await client.DownloadDataTaskAsync(PlayingUrl);
-                
+
                 if (result != null && result.Length > 0)
                     Status = JsonConvert.DeserializeObject<Status>(Encoding.UTF8.GetString(result));
                 else
@@ -113,15 +109,13 @@ namespace EZBlocker2.Spotify
             }
             catch (WebException ex)
             {
-                MessageBox.Show(ex.Message);
-
-                /*if (!(ex.Response is HttpWebResponse response && response.StatusCode == (HttpStatusCode)429))
+                if (!(ex.Response is HttpWebResponse response && response.StatusCode == (HttpStatusCode)429))
                 {
                     GetToken(true);
+                    //WriteLog(ex);
                 }
                 else
-                    Status = new Status { Retry_After = Convert.ToInt32(response.Headers.Get("Retry-After") ?? "0") * 1000 };*/
-
+                    Status = new Status { Retry_After = Convert.ToInt32(response.Headers.Get("Retry-After") ?? "0") * 1000 };
 
                 WriteLog(ex);
             }

@@ -83,7 +83,7 @@ namespace EZBlocker2
             this.btnMinimize.Size = new System.Drawing.Size(50, 30);
             this.btnMinimize.TabIndex = 1;
             this.btnMinimize.TabStop = false;
-            this.toolTip.SetToolTip(this.btnMinimize, "Minimize " + Program.ProductName);
+            this.toolTip.SetToolTip(this.btnMinimize, "Minimize EZBlocker 2");
             this.btnMinimize.UseVisualStyleBackColor = true;
             this.btnMinimize.Click += new System.EventHandler(this.BtnMinimize_Click);
             // 
@@ -119,7 +119,7 @@ namespace EZBlocker2
             this.btnExit.Size = new System.Drawing.Size(50, 30);
             this.btnExit.TabIndex = 3;
             this.btnExit.TabStop = false;
-            this.toolTip.SetToolTip(this.btnExit, "Exit from " + Program.ProductName);
+            this.toolTip.SetToolTip(this.btnExit, "Exit from EZBlocker 2");
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
@@ -138,7 +138,7 @@ namespace EZBlocker2
             this.checkBoxStartOnLogin.TabIndex = 7;
             this.checkBoxStartOnLogin.TabStop = false;
             this.checkBoxStartOnLogin.Text = "Start on login";
-            this.toolTip.SetToolTip(this.checkBoxStartOnLogin, "Start " + Program.ProductName + " after user login");
+            this.toolTip.SetToolTip(this.checkBoxStartOnLogin, "Start EZBlocker 2 after user login");
             this.checkBoxStartOnLogin.UseVisualStyleBackColor = false;
             // 
             // checkBoxStartMinimized
@@ -156,7 +156,7 @@ namespace EZBlocker2
             this.checkBoxStartMinimized.TabIndex = 8;
             this.checkBoxStartMinimized.TabStop = false;
             this.checkBoxStartMinimized.Text = "Start minimized";
-            this.toolTip.SetToolTip(this.checkBoxStartMinimized, "Start " + Program.ProductName + " minimized in icon tray");
+            this.toolTip.SetToolTip(this.checkBoxStartMinimized, "Start EZBlocker 2 minimized in icon tray");
             this.checkBoxStartMinimized.UseVisualStyleBackColor = false;
             // 
             // checkBoxBlockAds
@@ -243,7 +243,7 @@ namespace EZBlocker2
             this.titleLabel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.titleLabel.Size = new System.Drawing.Size(450, 30);
             this.titleLabel.TabIndex = 0;
-            this.titleLabel.Text = Program.ProductName;
+            this.titleLabel.Text = "EZBlocker 2";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panelMain
@@ -374,7 +374,7 @@ namespace EZBlocker2
             this.labelMessage.Name = "labelMessage";
             this.labelMessage.Size = new System.Drawing.Size(367, 42);
             this.labelMessage.TabIndex = 0;
-            this.labelMessage.Text = "Loading " + Program.ProductName + "...";
+            this.labelMessage.Text = "Loading EZBlocker 2...";
             this.labelMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelSeparatorUp
@@ -431,7 +431,7 @@ namespace EZBlocker2
             // 
             this.notifyIcon.ContextMenuStrip = this.contextMenuStrip;
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
-            this.notifyIcon.Text = Program.ProductName;
+            this.notifyIcon.Text = "EZBlocker 2";
             this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon_MouseDoubleClick);
             // 
             // timerStatus
@@ -454,7 +454,7 @@ namespace EZBlocker2
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = Program.ProductName;
+            this.Text = "EZBlocker 2";
             this.Load += new System.EventHandler(this.Main_Load);
             this.Shown += new System.EventHandler(this.Main_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.imgSpotifyLogo)).EndInit();
