@@ -68,9 +68,9 @@ namespace EZBlocker2
                     StreamWriter response = new StreamWriter(context.Response.OutputStream);
 
                     if (error)
-                        response.Write(Properties.Resources.AuthorizationError.Replace("{AUTHORIZE_URL}", Spotify.WebAPI.AuthorizeUrl));
+                        response.Write(Properties.Resources.AuthorizationError.Replace("{PRODUCT_NAME}", Program.ProductName).Replace("{AUTHORIZE_URL}", Spotify.WebAPI.AuthorizeUrl));
                     else
-                        response.Write(Properties.Resources.AuthorizationSuccess);
+                        response.Write(Properties.Resources.AuthorizationSuccess.Replace("{PRODUCT_NAME}", Program.ProductName));
 
                     response.Close();
                 }
