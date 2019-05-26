@@ -105,6 +105,10 @@ namespace EZBlocker2.Spotify
                 client.Headers[HttpRequestHeader.Authorization] = APIToken.Token_Type + " " + APIToken.Access_Token;
 
                 byte[] result = await client.DownloadDataTaskAsync(PlayingUrl);
+                HttpStatusCode status = client.GetLastHttpStatusCode();
+
+                if (status != HttpStatusCode.OK)
+                    MessageBox.Show(status.ToString());
                 
                 if (result != null && result.Length > 0)
                     Status = JsonConvert.DeserializeObject<Status>(Encoding.UTF8.GetString(result));

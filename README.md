@@ -23,7 +23,7 @@ To update your EZBlocker 2, replace the executable or use <b>auto-update</b> pro
 
 Mute ads:
 - <s>Basically Spotify desktop runs a web server on 127.0.0.1 that contains information about Spotify status. EZBlocker 2 attempts to extract song information hooking to this local server. To use this non-intrusive method, web helper in Spotify must be enabled.</s>
-- EZBlocker 2 attempts to extract song information hooking to the new Spotify Web API. To use this official method you need to connect with your Spotify account (using any browser) and it is necessary to accept the request. (<a href="https://developer.spotify.com/assets/oauth.png">Example</a>)
+- EZBlocker 2 attempts to extract song information hooking to the new [Spotify Web API][8]. To use this official method you need to connect with your Spotify account (using any browser) and it is necessary to accept the request. (<a href="https://developer.spotify.com/assets/oauth.png">Example</a>)
 
 Block ads:
 - To prevent ads on Spotify from loading EZBlocker 2 must apply <b>hosts patches</b> on your system. These patches to be applied should require administrator rights.
@@ -52,6 +52,12 @@ EZBlocker 2 will create a log with all errors detected. If you want to open a is
 #
 
 ### Changelog
+
+Version 2.1.4.0:
+- Changed request interval (500ms)
+- Updated resources using NuGet
+- Updated authorization page
+- Added Spotify Web API link
 
 Version 2.1.3.4:
 - Fixed log
@@ -196,3 +202,4 @@ Version 2.0.0.0:
 [5]: https://github.com/naudio/NAudio
 [6]: https://github.com/JamesNK/Newtonsoft.Json
 [7]: https://github.com/MatrixDJ96/EZBlocker2/releases
+[8]: https://developer.spotify.com/documentation/web-api/reference/player/get-the-users-currently-playing-track/
